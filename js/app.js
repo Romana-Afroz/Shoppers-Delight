@@ -1,13 +1,13 @@
 
-// Modal content clear id 
-const clearTitle = document.getElementById("exampleModalLabel");
+// for Modal clear  
+const clearTitle = document.getElementById("addModal");
 const clearImg = document.getElementById("modal-img");
 
-// in modal hidden 'add to cart' button functionality for 'buy now' button
+// for modal hidden  button 
 const hiddenCart = document.getElementById("hidden-cart");
 hiddenCart.classList.remove("d-none");
 
-// search by catagory section 
+// for searchfiled by catagory 
 const searchFieldData = document.getElementById("search-btn").addEventListener("click", () => {
 		const get = document.getElementById("input-field");
 		const getData = get.value;
@@ -16,9 +16,10 @@ const searchFieldData = document.getElementById("search-btn").addEventListener("
 	});
 
 
-// function call load all api product section 
+// for fetch url and load data  
 const loadProducts = (data, check) => {
-	// 'check' is a boolean type data. when product load from search catagoty that time check == true 
+
+	// for condition to is it true or false
 
 	if (check === true) {
 		const url = `https://fakestoreapi.com/products/category/${data}`;
@@ -26,7 +27,7 @@ const loadProducts = (data, check) => {
 			.then((res) => res.json())
 			.then((json) => showProducts(json));
 	} else {
-		// loadProducts function call onloading 
+		
 		const url = `https://fakestoreapi.com/products`;
 		fetch(url)
 			.then((response) => response.json())
@@ -44,7 +45,7 @@ const showProducts = (products) => {
 	allProductDiv.innerHTML = ""; 
   	// product counting, how many product is found from onload and search load 	
 	let count = 0;                 		
-
+    //for doing loop in all products
   for (const product of allProducts) {
     count++;
     const image = product.image;
@@ -63,6 +64,8 @@ const showProducts = (products) => {
     //   <button id="details-btn" class="btn btn-danger">Details</button></div>
     //   `;
     // document.getElementById("all-products").appendChild(div);
+
+	//for innerHTML
     div.innerHTML = `
 		<div class="single-product shadow-lg rounded-3 mx-2 mb-4">
 			<div>
@@ -91,13 +94,19 @@ const showProducts = (products) => {
 		allProductDiv.appendChild(div);
   }
 
-	//check if there is no data found in search by catagory that time this will show an error message
+	//for showing an error message
 	if (count === 0) {
-		allProductDiv.innerHTML = `<h1 class=" text-center  bg-danger p-3">No result found</h1>`;
+		allProductDiv.innerHTML = `
+		<h2 class=" text-center bg-danger p-3"style="margin-right:10px">No Items Found</h2>
+		<h2 class=" text-center bg-danger p-3 " style="margin-right:10px"> Please Try Again</h2>
+		<h2 class=" text-center bg-danger p-3 "style="margin-right:10px">Enter Another keyword</h2>
+		`;
+		
 	}
+	
 };
 
-// dynamics star rating function
+// for dynamic star rating function
 const doStarRating = (rate) => {
 	// console.log("rate", rate);
 	let rating = '';
@@ -109,10 +118,27 @@ const doStarRating = (rate) => {
 	return rating;
 
 };
+// const doStarRating =(rate,stars)=>{
+//     let rating = Math.round(stars);
+//     let i = parseInt(rate);
+//     if(rating=== 1){
+//       document.getElementById(i).innerHTML='<i class="fas fa-star text-danger"></i><i class="fas fa-star text-secondary"></i><i class="fas fa-star text-secondary"></i><i class="fas fa-star text-secondary"></i><i class="fas fa-star text-secondary"></i>';
+//     }
+//     else if(rating=== 2){
+//     document.getElementById(i).innerHTML='<i class="fas fa-star text-danger"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-secondary"></i><i class="fas fa-star text-secondary"></i><i class="fas fa-star text-secondary"></i>';
+//     }
+//     else if(rating=== 3){
+//     document.getElementById(i).innerHTML='<i class="fas fa-star text-danger"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-danger"></i><i class="fas fa-star text-secondary"></i><i class="fas fa-star text-secondary"></i>';
+//     }
+//     else if(rating=== 4){
+//     document.getElementById(i).innerHTML='<i class="fas fa-star text-danger"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-danger"></i><i class="fas fa-star text-danger"></i><i class="fas fa-star text-secondary"></i>';
+//     }
+//     else if(rating=== 5){
+//     document.getElementById(i).innerHTML='<i class="fas fa-star text-danger"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-danger"></i><i class="fas fa-star text-danger"></i><i class="fas fa-star text-danger"></i>';
+//     }
+// }
 
-
-
-// single product details function called from 'view details' button 
+// single product details function  button 
 const loadSingleProductsDetails = (id) => {
 	const url = `https://fakestoreapi.com/products/${id}`;
 	fetch(url)
@@ -124,19 +150,19 @@ const loadSingleProductsDetails = (id) => {
 //single product details view in modal section 
 const displayModal = (data) => {
 
-	console.log("data id ", data);
+	// console.log("data id ", data);
 	hiddenCart.classList.remove("d-none");
 
-	const title = document.getElementById("exampleModalLabel");
+	const title = document.getElementById("addModal");
 	title.innerText = data.title;
 	const imgAdd = document.getElementById("modal-img");
-	const addCart = document
-		.getElementById("addCartFromModal")
-		.addEventListener("click", () => {
-			addToCart(data.id, data.price);
-			clearTitle.innerText = "";
-			clearImg.innerText = "";
-		});
+	// const addCart = document.getElementById("addCartFromModal").addEventListener("click", () => {
+	// addToCart(data.id, data.price);
+	// 	clearTitle.innerText = "";
+	// 	clearImg.innerText = "";
+	// 	});
+
+	//for innerhtml part
 	imgAdd.innerHTML = `
   	<div class="row">
    		<div class="col"><img  style="height:200px;" src="${data.image}" alt="" class="img-fluid"></div>
@@ -147,20 +173,25 @@ const displayModal = (data) => {
   	<h5>Rating: ${data.rating.rate}</h5>
   	<h3 class="text-danger">Price: $ ${data.price}</h3>
 `;
+	document.getElementById("addCartFromModal").addEventListener("click",() => {
+		addToCart(data.id, data.price);
+	  },
+	    { once: true }
+   );
 };
 
 
-// if modal section is close after that this cleanData will clear all previous history
+// for clear data
 const clearData = () => {
 	clearTitle.innerText = "";
 	clearImg.innerText = "";
 };
 
 
-// buyNow modal functionality 
+//  for buyNow button
 const buyNow = document.getElementById('buy-now').addEventListener('click', () => {
 
-	const title = document.getElementById("exampleModalLabel");
+	const title = document.getElementById("addModal");
 	const totalProduct = document.getElementById("total-Products");
 	const totalProductText = totalProduct.innerText;
 

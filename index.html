@@ -15,15 +15,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
-   
+  <!-- font awesome  -->
+  <!-- <script src="https://kit.fontawesome.com/2c7d300d86.js" crossorigin="anonymous"></script>  -->
   <!-- bootstrap icon cdn link  -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <!-- favicon link -->
+  <link rel="shortcut icon" href="img/favicon.png" type=" image/png">
 </head>
 
 <body>
   <header class="text-center pt-4">
     <h1 class="text-info">Shopper's Delight</h1>
-    <h5 class="text-black-50">All your needs we have it here!</h5>
+    <h5 class="text-black-50 fs-6 fst-italic">All your needs we have it here!</h5>
   </header>
   <main class="main">
     <!-- <div class="search-field">
@@ -35,7 +38,7 @@
         </button>
       </div>
     </div> -->
-    <!-- search field section  -->
+    <!--  for search field section  -->
   <div class="pb-5 pt-3 d-flex justify-content-center">
     <div class="input-group mb-3 w-25">
         <input id="input-field" type="text" class="form-control" placeholder="Search your desire item" type="text" />
@@ -50,7 +53,7 @@
           <h1></h1>
         </div>
       </div>
-      <!-- cart section -->
+      <!-- for cart section -->
       <div class="col-md-3 col-lg-3 col-sm-5 cart-main">
         <div class="cart" id="my-cart">
           <table class="table">
@@ -102,38 +105,36 @@
       </div>
     </div>
     		<!-- for  Modal -->
-		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="addModal" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content ">
 					<div class="modal-header">
 						<!-- modal title section  -->
-						<h5 class="modal-title" id="exampleModalLabel"></h5>
+						<h5 class="modal-title" id="addModal"></h5>
 						<!-- modal close icon  -->
 						<button type="button" class="btn-close" onclick="clearData()" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 						<!-- modal body section  -->
 					<div class="modal-body" id="modal-img"></div>
 					<div class="modal-footer">
-							<button type="button" onclick="clearData()" class="btn btn-primary" data-bs-dismiss="modal">Close
+							<button type="button" onclick="clearData()" class="btn btn-danger" data-bs-dismiss="modal">Cancel
 							</button>
 
 							<div id="hidden-cart">
-										<button type="button" id="addCartFromModal" class="btn btn-success" data-bs-dismiss="modal">add to cart
+										<button type="button" id="addCartFromModal" class="btn btn-success" data-bs-dismiss="modal">Order Now
 										</button>
-							</div>
-					
-						
+							</div>		
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- end modal  -->
+	
   </main>
   <footer></footer>
 
   <!-- add javascript  file  -->
   <script src="js/app.js"></script>
-  <!-- bootstrap -->
+  <!-- bootstrap  bundel link-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 
